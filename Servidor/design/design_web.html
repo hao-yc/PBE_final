@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Escolar UPC Telecos</title>
+  <style>
+    :root {
+      --upc-blue: #003366;
+      --upc-light-blue: #0066cc;
+      --upc-orange: #ff6600;
+      --upc-gray: #f0f2f5;
+      --upc-dark: #333333;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      background-color: var(--upc-gray);
+      color: var(--upc-dark);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      background-color: var(--upc-blue);
+      color: white;
+      padding: 20px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 15px;
+    }
+
+    .logo-text h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .logo-text p {
+      margin: 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .user-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+
+    .card-title {
+      color: var(--upc-blue);
+      border-bottom: 2px solid var(--upc-orange);
+      padding-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    input {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+      transition: border 0.3s;
+    }
+
+    input:focus {
+      border-color: var(--upc-light-blue);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background-color: var(--upc-orange);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #e65c00;
+    }
+
+    .btn-secondary {
+      background-color: var(--upc-light-blue);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: #005bb5;
+    }
+
+    .action-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    th {
+      background-color: var(--upc-blue);
+      color: white;
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .user-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .user-info-item {
+      flex: 1;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .user-info-item:last-child {
+      margin-right: 0;
+    }
+
+    .user-info-item strong {
+      display: block;
+      color: var(--upc-blue);
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo {
+        margin-bottom: 15px;
+        justify-content: center;
+      }
+      
+      .action-buttons {
+        grid-template-columns: 1fr;
+      }
+      
+      .user-info {
+        flex-direction: column;
+      }
+      
+      .user-info-item {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+      <!-- Logo UPC real -->
+        <img src="logo.png" alt="Logo UPC" width="100" height="100" style="border-radius: 8px;">
+
+        <div class="logo-text">
+          <h1>UPC Telecos</h1>
+          <p>Panel de seguimiento académico</p>
+        </div>
+      </div>
+      <div class="user-section">
+        <div id="current-time" style="color: white; font-weight: 600;"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="uid-section" class="card">
+      <h2 class="card-title">Identificación</h2>
+      <p>Por favor, introduce tu identificador de estudiante UPC</p>
+      <input type="text" id="uid-input" placeholder="Ejemplo: stu001" />
+      <button id="btnSetUid" class="btn-primary">Acceder al panel</button>
+    </div>
+
+    <div id="main-section" class="hidden">
+      <div class="card">
+        <div class="user-info">
+          <div class="user-info-item">
+            <strong>UID</strong>
+            <span id="uid-display"></span>
+          </div>
+          <div class="user-info-item">
+            <strong>Nombre</strong>
+            <span id="name-display"></span>
+          </div>
+          <div class="user-info-item">
+            <strong>Hora actual</strong>
+            <span id="current-time-user"></span>
+          </div>
+        </div>
+
+        <h2 class="card-title">Acciones disponibles</h2>
+        <div class="action-buttons">
+          <button id="btnTimetables" class="btn-secondary">📅 Horarios</button>
+          <button id="btnTasks" class="btn-secondary">📖 Tareas</button>
+          <button id="btnMarks" class="btn-secondary">📊 Calificaciones</button>
+        </div>
+      </div>
+
+      <div id="contenedor" class="card"></div>
+    </div>
+  </main>
+
+  <script>
+    // Elementos del DOM
+    const uidSection = document.getElementById('uid-section');
+    const mainSection = document.getElementById('main-section');
+    const uidInput = document.getElementById('uid-input');
+    const uidDisplay = document.getElementById('uid-display');
+    const nameDisplay = document.getElementById('name-display');
+    const contenedor = document.getElementById('contenedor');
+    let currentUid = '';
+
+    // Actualizar reloj
+    function updateClock() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('es-ES');
+      const dateStr = now.toLocaleDateString('es-ES', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+      
+      const timeElement = document.getElementById('current-time');
+      const userTimeElement = document.getElementById('current-time-user');
+      
+      if (timeElement) timeElement.textContent = `${dateStr} - ${timeStr}`;
+      if (userTimeElement) userTimeElement.textContent = timeStr;
+    }
+    
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Mostrar sección principal
+    function showMain() {
+      uidSection.classList.add('hidden');
+      mainSection.classList.remove('hidden');
+      uidDisplay.textContent = currentUid;
+    }
+
+    // Obtener nombre de usuario
+    function fetchUserName(uid) {
+      fetch(`http://localhost:3000/user/${uid}`, {
+          headers: { 'uid': uid }
+        })
+        .then(res => res.json())
+        .then(data => {
+          nameDisplay.textContent = data?.name || 'Usuario no encontrado';
+        })
+        .catch(err => {
+          console.error(err);
+          nameDisplay.textContent = 'Error al obtener datos';
+        });
+    }
+
+    // Evento para establecer UID
+    document.getElementById('btnSetUid').addEventListener('click', () => {
+      const uid = uidInput.value.trim();
+      if (!uid) {
+        alert('Por favor, introduce un identificador válido.');
+        return;
+      }
+      currentUid = uid;
+      showMain();
+      fetchUserName(uid);
+    });
+
+    // Limpiar contenedor
+    function limpiar() {
+      contenedor.innerHTML = '';
+    }
+
+    // Renderizar tabla
+    function renderTabla(data) {
+      if (!Array.isArray(data) || data.length === 0) {
+        contenedor.innerHTML = '<p class="no-data">No hay datos disponibles.</p>';
+        return;
+      }
+
+      const tabla = document.createElement('table');
+      const thead = document.createElement('thead');
+      const tbody = document.createElement('tbody');
+
+      // Cabecera
+      const headers = Object.keys(data[0]).filter(key => key !== '_id' && key !== '__v');
+      const filaCabecera = document.createElement('tr');
+      
+      headers.forEach(header => {
+        const th = document.createElement('th');
+        th.textContent = header.charAt(0).toUpperCase() + header.slice(1);
+        filaCabecera.appendChild(th);
+      });
+      thead.appendChild(filaCabecera);
+      tabla.appendChild(thead);
+
+      // Filas
+      data.forEach(item => {
+        const fila = document.createElement('tr');
+        headers.forEach(header => {
+          const td = document.createElement('td');
+          let val = item[header];
+          
+          if (header === 'date' && val) {
+            val = new Date(val).toLocaleDateString('es-ES');
+          } else if (header === 'value' && !isNaN(val)) {
+            td.style.fontWeight = '600';
+            td.style.color = val >= 5 ? 'green' : 'red';
+          }
+          
+          td.textContent = val || '-';
+          fila.appendChild(td);
+        });
+        tbody.appendChild(fila);
+      });
+      
+      tabla.appendChild(tbody);
+      
+      // Limpiar y mostrar
+      limpiar();
+      contenedor.appendChild(tabla);
+    }
+
+    // Obtener datos
+    function fetchData(endpoint) {
+      limpiar();
+      contenedor.innerHTML = '<p>Cargando datos...</p>';
+      
+      fetch(`http://localhost:3000/${endpoint}`, {
+          headers: { 'uid': currentUid }
+        })
+        .then(res => {
+          if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
+          return res.json();
+        })
+        .then(data => {
+          if (!data || data.length === 0) {
+            contenedor.innerHTML = `<p>No hay ${endpoint} disponibles.</p>`;
+          } else {
+            renderTabla(data);
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          contenedor.innerHTML = `
+            <div style="color: red; padding: 15px; background: #ffeeee; border-radius: 4px;">
+              <strong>Error al obtener datos:</strong>
+              <p>${err.message}</p>
+              <p>Por favor, intenta nuevamente o contacta con soporte.</p>
+            </div>
+          `;
+        });
+    }
+
+    // Eventos de botones
+    document.getElementById('btnTimetables').addEventListener('click', () => fetchData('timetables'));
+    document.getElementById('btnTasks').addEventListener('click', () => fetchData('tasks'));
+    document.getElementById('btnMarks').addEventListener('click', () => fetchData('marks'));
+  </script>
+</body>
+
+</html>
