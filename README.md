@@ -1,5 +1,5 @@
 # PBE_final
-Proyecto avanzado de Ingeniería
+Proyecto básico de Ingeniería
 
 Descripción del proyecto
 
