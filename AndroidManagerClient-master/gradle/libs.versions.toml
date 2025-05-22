@@ -1,0 +1,49 @@
+############ VERSIONS ##########################################################
+[versions]
+# Herramientas ---------------------------------------------------------------
+agp              = "8.2.2"       # Android Gradle Plugin estable
+kotlin           = "1.9.22"      # Pareja válida para compose-compiler 1.6.1
+compose-bom      = "2024.03.00"  # BOM que arrastra compose-compiler 1.6.1
+composeCompiler  = "1.5.10"
+
+# AndroidX básicos ------------------------------------------------------------
+core-ktx                = "1.10.1"
+lifecycle-runtime-ktx   = "2.6.1"
+activity-compose        = "1.8.0"
+
+# Testing ---------------------------------------------------------------------
+junit           = "4.13.2"
+junit-androidx  = "1.1.5"
+espresso-core   = "3.5.1"
+
+############ LIBRARIES #########################################################
+[libraries]
+# AndroidX núcleo
+
+androidx-core-ktx                 = { group = "androidx.core",            name = "core-ktx",               version.ref = "core-ktx" }
+androidx-lifecycle-runtime-ktx    = { group = "androidx.lifecycle",       name = "lifecycle-runtime-ktx",  version.ref = "lifecycle-runtime-ktx" }
+androidx-activity-compose         = { group = "androidx.activity",        name = "activity-compose",       version.ref = "activity-compose" }
+
+# Compose (usamos BOM)
+androidx-compose-bom              = { group = "androidx.compose",         name = "compose-bom",            version.ref = "compose-bom" }
+androidx-ui                       = { group = "androidx.compose.ui",      name = "ui" }
+androidx-ui-graphics              = { group = "androidx.compose.ui",      name = "ui-graphics" }
+androidx-ui-tooling               = { group = "androidx.compose.ui",      name = "ui-tooling" }
+androidx-ui-tooling-preview       = { group = "androidx.compose.ui",      name = "ui-tooling-preview" }
+androidx-ui-test-manifest         = { group = "androidx.compose.ui",      name = "ui-test-manifest" }
+androidx-ui-test-junit4           = { group = "androidx.compose.ui",      name = "ui-test-junit4" }
+androidx-material3                = { group = "androidx.compose.material3", name = "material3" }
+
+# Test
+junit                             = { group = "junit",                    name = "junit",                  version.ref = "junit" }
+androidx-junit                    = { group = "androidx.test.ext",        name = "junit",                  version.ref = "junit-androidx" }
+androidx-espresso-core            = { group = "androidx.test.espresso",   name = "espresso-core",          version.ref = "espresso-core" }
+
+############ PLUGINS ###########################################################
+[plugins]
+android-application   = { id = "com.android.application",                        version.ref = "agp" }
+kotlin-android        = { id = "org.jetbrains.kotlin.android",                   version.ref = "kotlin" }
+# ❌  NO añadimos 'kotlin-compose': solo es necesario para Kotlin ≥ 2.0
+
+
+# 👇 NO añadas kotlin-compose aquí (solo hace falta con Kotlin 2.0)
