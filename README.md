@@ -27,3 +27,17 @@ Mejoras implementadas
 Resultado final
 
 El sistema desarrollado permite la conexión exitosa entre cliente y servidor, logrando leer el UID de una tarjeta NFC y mostrar la información académica correspondiente. Aunque ha habido dificultades técnicas durante el desarrollo, el resultado es un prototipo funcional que demuestra la viabilidad del concepto y proporciona una base sólida para futuras mejoras o ampliaciones
+
+FOTOS resutaldo :
+HTML:
+<img width="455" height="283" alt="pae_html" src="https://github.com/user-attachments/assets/38a7018f-1ba3-4a90-a46a-ec949609df16" />
+
+NFC CORRECTO:
+<img width="684" height="632" alt="Captura de pantalla 2026-05-04 172354" src="https://github.com/user-attachments/assets/a3c14c49-9bbf-4e52-8339-8f31fad12a86" />
+
+NFC INCORRECTO:
+<img width="319" height="361" alt="image" src="https://github.com/user-attachments/assets/f27516ce-6eb7-4302-9d9b-8c00ba94dfeb" />
+
+
+
+
